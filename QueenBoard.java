@@ -34,11 +34,18 @@ public class QueenBoard{
   }
 
   public boolean addQueen(int r,int c){
+    int xcor = r;
+    int ycor = c;
     if(board[r][c] < 0 || board[r][c] >= 1){
       return false;
     }else{
       board[r][c] = -1;
-      
+      for(int i = 0; i < board.length; i++){
+        board[r][i] = board[r][i] + 1;
+      }
+      for(int j = 0; j < board.length; j++){
+        board[j][c] = board[j][c] + 1;
+      }
     }
   }
 
