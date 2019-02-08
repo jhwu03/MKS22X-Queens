@@ -22,13 +22,24 @@ public class QueenBoard{
     String b = "";
     for(int i = 0; i < board.length; i++){
       for(int r = 0; r < board.length;r++){
-        if(board[i][r] == 0 ){
+        if(board[i][r] > 0 ){
           b = b + "_ ";
+        }else{
+          b = b + "Q ";
         }
       }
       b = b + "\n";
     }
     return b;
+  }
+
+  public boolean addQueen(int r,int c){
+    if(board[r][c] < 0 || board[r][c] >= 1){
+      return false;
+    }else{
+      board[r][c] = -1;
+      
+    }
   }
 
 
