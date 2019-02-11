@@ -137,6 +137,31 @@ public class QueenBoard{
 
     return true;
   }
+  public boolean solve(){
+    if (length == 0) return false;
+    for (int x = 0; x < length; x++){
+      for (int y = 0; y < length; y++){
+        if (board[x][y] != 0) throw new IllegalStateException();
+      }
+    }
+    return solveH(0);
+  }
+
+  public boolean solveH(int col){
+    if(col >= length){
+      return true;
+    }
+    for (int i = 0; i < length; i++) {
+        if (addQueen(col, i)) {
+                if (solveH(col + 1)) {
+                  return true;
+                }else{
+                  removeQueen(col, i);
+                }
+        }
+    }
+    return false;
+  }
 
 
 
