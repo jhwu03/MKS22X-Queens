@@ -36,8 +36,6 @@ public class QueenBoard{
   }
 
   public boolean addQueen(int r,int c){
-    int xcor = r;
-    int ycor = c;
     if(board[r][c] < 0 || board[r][c] >= 1){
       return false;
     }else{
@@ -48,6 +46,8 @@ public class QueenBoard{
       for(int j = 0; j < board.length; j++){
         board[j][c] = board[j][c] + 1;
       }
+      int xcor = r;
+      int ycor = c;
       while (xcor < length && ycor < length ){
         if(board[xcor][ycor] != -1){
           board[xcor][ycor] = board[xcor][ycor] + 1;
@@ -55,6 +55,8 @@ public class QueenBoard{
         xcor++;
         ycor++;
       }
+       xcor = r;
+       ycor = c;
       while (xcor >= 0 && ycor < length ){
         if(board[xcor][ycor] != -1){
           board[xcor][ycor] = board[xcor][ycor] + 1;
@@ -62,6 +64,8 @@ public class QueenBoard{
         xcor--;
         ycor++;
       }
+       xcor = r;
+       ycor = c;
       while (xcor >= 0 && ycor >= 0){
         if(board[xcor][ycor] != -1){
           board[xcor][ycor] = board[xcor][ycor] + 1;
@@ -69,6 +73,8 @@ public class QueenBoard{
         xcor--;
         ycor--;
       }
+      xcor = r;
+      ycor = c;
       while (xcor < length && ycor >= 0){
         if(board[xcor][ycor] != -1){
           board[xcor][ycor] = board[xcor][ycor] + 1;
@@ -78,6 +84,57 @@ public class QueenBoard{
       }
 
     }
+    return true;
+  }
+
+  public boolean removeQueen(int r,int c){
+    if(board[r][c] != -1){
+      return false;
+    }
+      board[r][c] = 0;
+      for(int i = 0; i < board.length; i++){
+        board[r][i] = board[r][i] - 1;
+      }
+      for(int j = 0; j < board.length; j++){
+        board[j][c] = board[j][c] - 1;
+      }
+      int xcor = r;
+      int ycor = c;
+      while (xcor < length && ycor < length ){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] - 1;
+        }
+        xcor++;
+        ycor++;
+      }
+       xcor = r;
+       ycor = c;
+      while (xcor >= 0 && ycor < length ){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] - 1;
+        }
+        xcor--;
+        ycor++;
+      }
+       xcor = r;
+       ycor = c;
+      while (xcor >= 0 && ycor >= 0){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] - 1;
+        }
+        xcor--;
+        ycor--;
+      }
+       xcor = r;
+       ycor = c;
+      while (xcor < length && ycor >= 0){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] - 1;
+        }
+        xcor++;
+        ycor--;
+      }
+
     return true;
   }
 
