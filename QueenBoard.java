@@ -1,7 +1,9 @@
 public class QueenBoard{
   int[][] board;
+  int length;
   public QueenBoard(int size){
     board = new int[size][size];
+    length = size;
   }
 
   /**
@@ -46,7 +48,37 @@ public class QueenBoard{
       for(int j = 0; j < board.length; j++){
         board[j][c] = board[j][c] + 1;
       }
+      while (xcor < length && ycor < length ){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] + 1;
+        }
+        xcor++;
+        ycor++;
+      }
+      while (xcor >= 0 && ycor < length ){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] + 1;
+        }
+        xcor--;
+        ycor++;
+      }
+      while (xcor >= 0 && ycor >= 0){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] + 1;
+        }
+        xcor--;
+        ycor--;
+      }
+      while (xcor < length && ycor >= 0){
+        if(board[xcor][ycor] != -1){
+          board[xcor][ycor] = board[xcor][ycor] + 1;
+        }
+        xcor++;
+        ycor--;
+      }
+
     }
+    return true;
   }
 
 
