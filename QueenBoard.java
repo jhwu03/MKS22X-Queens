@@ -155,7 +155,7 @@ public class QueenBoard{
     }
     for (int i = 0; i < board.length; i++) {
         if (addQueen(i, col)) {
-                if (solveH(col + 1)) {
+                if (solveH(col + 1)) { //recursive call
                   return true;
                 }
                   removeQueen(i, col);
@@ -170,7 +170,7 @@ public class QueenBoard{
         if (board[x][y] != 0) throw new IllegalStateException();
       }
     }
-    return countH(0);
+    return countH(0);//helper function
   }
 
   public int countH(int col){
@@ -180,7 +180,7 @@ public class QueenBoard{
     }
     for (int i = 0; i < board.length; i++) {
         if (addQueen(i, col)) {
-                ans += countH(col + 1);
+                ans += countH(col + 1); //recursive call
                 }
                   removeQueen(i, col);
                 }
