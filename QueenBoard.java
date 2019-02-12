@@ -27,7 +27,7 @@ public class QueenBoard{
          if (board[row][col] == -1) { // if current index is -1 it means it is a queen
            ans += "Q ";
          } else {
-           ans += "_ ";
+           ans += "_ "; // else print undersocre for the board
          }
        }
        ans += "\n";
@@ -36,16 +36,17 @@ public class QueenBoard{
    }
 
      public boolean addQueen(int r,int c){
-   if(board[r][c] < 0 || board[r][c] >= 1){
+   if(board[r][c] < 0 || board[r][c] >= 1){ // if the coordinate is negative or greater than 0 then you can add queen
      return false;
    }else{
 
-     for(int i = 0; i < board.length; i++){
+     for(int i = 0; i < board.length; i++){ //vertically fill up limits
        board[r][i] = board[r][i] + 1;
      }
-     for(int j = 0; j < board.length; j++){
+     for(int j = 0; j < board.length; j++){ //horizontal fill up limits
        board[j][c] = board[j][c] + 1;
      }
+     //fill up limits of diagonals
      int xcor = r;
      int ycor = c;
      while (xcor < length && ycor < length ){
