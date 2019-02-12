@@ -89,16 +89,17 @@ public class QueenBoard{
  }
 
   public boolean removeQueen(int r,int c){
-    if(board[r][c] != -1){
+    if(board[r][c] != -1){ // if coordinate is not -1 then it is not a queen
       return false;
     }
 
-      for(int i = 0; i < board.length; i++){
+      for(int i = 0; i < board.length; i++){ //vertically filling limits
         board[r][i] = board[r][i] - 1;
       }
-      for(int j = 0; j < board.length; j++){
+      for(int j = 0; j < board.length; j++){//horizontally filling limits
         board[j][c] = board[j][c] - 1;
       }
+      // filling limits of diagonals
       int xcor = r;
       int ycor = c;
       while (xcor < length && ycor < length ){
@@ -142,10 +143,10 @@ public class QueenBoard{
     if (length == 0) return false;
     for (int x = 0; x < length; x++){
       for (int y = 0; y < length; y++){
-        if (board[x][y] != 0) throw new IllegalStateException();
+        if (board[x][y] != 0) throw new IllegalStateException(); //throw exception is board is not all 0
       }
     }
-    return solveH(0);
+    return solveH(0); //helper function
   }
 
   public boolean solveH(int col){
