@@ -148,20 +148,54 @@ public class QueenBoard{
   }
 
   public boolean solveH(int col){
-    if(col >= length){
+    if(col >= board.length){
       return true;
     }
-    for (int i = 0; i < length; i++) {
-        if (addQueen(col, i)) {
+    for (int i = 0; i < board.length; i++) {
+        if (addQueen(i, col)) {
                 if (solveH(col + 1)) {
                   return true;
                 }else{
-                  removeQueen(col, i);
+                  removeQueen(i, col);
                 }
         }
     }
     return false;
   }
+
+  public int countSolution(){
+    for (int x = 0; x < length; x++){
+      for (int y = 0; y < length; y++){
+        if (board[x][y] != 0) throw new IllegalStateException();
+      }
+    }
+    return countH(0);
+  }
+
+  public int countH(int col){
+    int ans = 0;
+    if(col >= length){
+      return 1;
+    }
+    for (int i = 0; i < length; i++) {
+        if (addQueen(col, i)) {
+                ans += countH(col + 1);
+                }else{
+                  removeQueen(col, i);
+                }
+    }
+    return ans;
+  }
+
+  public static void main(String[] args) {
+  	QueenBoard q = new QueenBoard(8);
+  	boolean b = q.solve();
+  	System.out.println(q);
+  	System.out.println(b);
+
+
+  }
+
 
 
 
