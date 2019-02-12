@@ -20,78 +20,78 @@ public class QueenBoard{
   *(pythonic string notation for clarity,
   *excludes the character up to the *)
   */
-  public String toString(){
-    String b = "";
-    for(int i = 0; i < board.length; i++){
-      for(int r = 0; r < board.length;r++){
-        if(board[i][r] > 0 ){
-          b = b + "_ ";
-        }else{
-          b = b + "Q ";
-        }
-      }
-      b = b + "\n";
-    }
-    return b;
-  }
+  public String toString() {
+     String ans = "";
+     for (int row = 0; row < board.length; row ++) {
+       for (int col = 0; col < board[row].length; col ++) {
+         if (board[row][col] == -1) {
+           ans += "Q ";
+         } else {
+           ans += "_ ";
+         }
+       }
+       ans += "\n";
+     }
+     return ans;
+   }
 
-  public boolean addQueen(int r,int c){
-    if(board[r][c] < 0 || board[r][c] >= 1){
-      return false;
-    }else{
-      board[r][c] = -1;
-      for(int i = 0; i < board.length; i++){
-        board[r][i] = board[r][i] + 1;
-      }
-      for(int j = 0; j < board.length; j++){
-        board[j][c] = board[j][c] + 1;
-      }
-      int xcor = r;
-      int ycor = c;
-      while (xcor < length && ycor < length ){
-        if(board[xcor][ycor] != -1){
-          board[xcor][ycor] = board[xcor][ycor] + 1;
-        }
-        xcor++;
-        ycor++;
-      }
-       xcor = r;
-       ycor = c;
-      while (xcor >= 0 && ycor < length ){
-        if(board[xcor][ycor] != -1){
-          board[xcor][ycor] = board[xcor][ycor] + 1;
-        }
-        xcor--;
-        ycor++;
-      }
-       xcor = r;
-       ycor = c;
-      while (xcor >= 0 && ycor >= 0){
-        if(board[xcor][ycor] != -1){
-          board[xcor][ycor] = board[xcor][ycor] + 1;
-        }
-        xcor--;
-        ycor--;
-      }
+     public boolean addQueen(int r,int c){
+   if(board[r][c] < 0 || board[r][c] >= 1){
+     return false;
+   }else{
+
+     for(int i = 0; i < board.length; i++){
+       board[r][i] = board[r][i] + 1;
+     }
+     for(int j = 0; j < board.length; j++){
+       board[j][c] = board[j][c] + 1;
+     }
+     int xcor = r;
+     int ycor = c;
+     while (xcor < length && ycor < length ){
+       if(board[xcor][ycor] != -1){
+         board[xcor][ycor] = board[xcor][ycor] + 1;
+       }
+       xcor++;
+       ycor++;
+     }
       xcor = r;
       ycor = c;
-      while (xcor < length && ycor >= 0){
-        if(board[xcor][ycor] != -1){
-          board[xcor][ycor] = board[xcor][ycor] + 1;
-        }
-        xcor++;
-        ycor--;
-      }
-
-    }
-    return true;
-  }
+     while (xcor >= 0 && ycor < length ){
+       if(board[xcor][ycor] != -1){
+         board[xcor][ycor] = board[xcor][ycor] + 1;
+       }
+       xcor--;
+       ycor++;
+     }
+      xcor = r;
+      ycor = c;
+     while (xcor >= 0 && ycor >= 0){
+       if(board[xcor][ycor] != -1){
+         board[xcor][ycor] = board[xcor][ycor] + 1;
+       }
+       xcor--;
+       ycor--;
+     }
+     xcor = r;
+     ycor = c;
+     while (xcor < length && ycor >= 0){
+       if(board[xcor][ycor] != -1){
+         board[xcor][ycor] = board[xcor][ycor] + 1;
+       }
+       xcor++;
+       ycor--;
+     }
+     board[r][c] = -1;
+   }
+   return true;
+ }
 
   public boolean removeQueen(int r,int c){
     if(board[r][c] != -1){
       return false;
     }
-      board[r][c] = 0;
+
       for(int i = 0; i < board.length; i++){
         board[r][i] = board[r][i] - 1;
       }
@@ -134,7 +134,7 @@ public class QueenBoard{
         xcor++;
         ycor--;
       }
-
+    board[r][c] = 0;
     return true;
   }
   public boolean solve(){
@@ -178,22 +178,21 @@ public class QueenBoard{
       return 1;
     }
     for (int i = 0; i < length; i++) {
-        if (addQueen(col, i)) {
+        if (addQueen(i, col)) {
                 ans += countH(col + 1);
                 }else{
-                  removeQueen(col, i);
+                  removeQueen(i, col);
                 }
     }
     return ans;
   }
 
   public static void main(String[] args) {
-  	QueenBoard q = new QueenBoard(8);
-  	boolean b = q.solve();
-  	System.out.println(q);
-  	System.out.println(b);
-
-
+    QueenBoard board = new QueenBoard(Integer.parseInt(args[0]));
+    //System.out.println(board.solve());
+    //System.out.println(board);
+    System.out.println(board.countSolution());
+    System.out.println(board);
   }
 
 
