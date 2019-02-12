@@ -2,7 +2,7 @@ public class QueenBoard{
   int[][] board;
   int length;
   public QueenBoard(int size){
-    board = new int[size][size];
+    board = new int[size][size]; //initiates board with n*n board
     length = size;
   }
 
@@ -24,7 +24,7 @@ public class QueenBoard{
      String ans = "";
      for (int row = 0; row < board.length; row ++) {
        for (int col = 0; col < board[row].length; col ++) {
-         if (board[row][col] == -1) {
+         if (board[row][col] == -1) { // if current index is -1 it means it is a queen
            ans += "Q ";
          } else {
            ans += "_ ";
@@ -155,10 +155,9 @@ public class QueenBoard{
         if (addQueen(i, col)) {
                 if (solveH(col + 1)) {
                   return true;
-                }else{
+                }
                   removeQueen(i, col);
                 }
-        }
     }
     return false;
   }
