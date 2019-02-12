@@ -174,16 +174,15 @@ public class QueenBoard{
 
   public int countH(int col){
     int ans = 0;
-    if(col >= length){
+    if(col >= board.length){
       return 1;
     }
-    for (int i = 0; i < length; i++) {
+    for (int i = 0; i < board.length; i++) {
         if (addQueen(i, col)) {
                 ans += countH(col + 1);
-                }else{
+                }
                   removeQueen(i, col);
                 }
-    }
     return ans;
   }
 
