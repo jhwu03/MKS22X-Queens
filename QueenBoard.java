@@ -164,7 +164,7 @@ public class QueenBoard{
     return false;
   }
 
-  public int countSolution(){
+  public int countSolutions(){
     for (int x = 0; x < length; x++){
       for (int y = 0; y < length; y++){
         if (board[x][y] != 0) throw new IllegalStateException();
@@ -191,7 +191,7 @@ public class QueenBoard{
     QueenBoard board = new QueenBoard(Integer.parseInt(args[0]));
     //System.out.println(board.solve());
     //System.out.println(board);
-    System.out.println(board.countSolution());
+    System.out.println(board.countSolutions());
     System.out.println(board);
   }
 
